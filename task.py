@@ -55,10 +55,20 @@ def write_tasks_to_file(taskSets, utilizationsSets, filename="task_sets.txt"):
             file.write("\n")
 
 # Run the UUniFast algorithm
-#RUN = 3   # Number of times to run the UUniFast algorithm
-#JOB_NUMBERS = 3  # Number of tasks in each set
-#UTILIZATION = 0.4  # Desired total utilization
+RUN = 3   # Number of times to run the UUniFast algorithm
+JOB_NUMBERS = 3  # Number of tasks in each set
+UTILIZATION = 1.0  # Desired total utilization
 
 # Generate task sets
-#taskSets, utilizationsSets = uunifasts(RUN, JOB_NUMBERS, UTILIZATION)
+taskSets, utilizationsSets = uunifasts(RUN, JOB_NUMBERS, UTILIZATION)
 
+# Write task sets to file
+write_tasks_to_file(taskSets, utilizationsSets)
+
+# Print generated task sets for verification
+#for i, (taskSet, utilizations) in enumerate(zip(taskSets, utilizationsSets)):
+#    print(f"Task Set {i+1}:")
+#    print(f"Utilizations: {utilizations}")
+#    for task in taskSet:
+#        print(f"Period: {task.T}, Execution: {task.C}, Deadline: {task.D}, L: {task.L}")
+#    print()
